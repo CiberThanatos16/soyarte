@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* Fuentes: next/font las expone como variables en <html> */
+@theme inline {
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-body: var(--font-jost), system-ui, sans-serif;
+}
+
+/* Tokens únicos del sitio (reemplazan los hex sueltos y los tokens de shadcn) */
+@theme {
+  --color-cream: #faf8f5;
+  --color-ink: #1a1614;
+  --color-body: #5a534e;      /* texto de párrafo sobre crema, ~7:1 */
+  --color-muted: #6f655e;     /* labels pequeños, ~5:1 */
+  --color-gold: #b89c7a;      /* solo decorativo (líneas, íconos grandes) */
+  --color-gold-ink: #7a5f3c;  /* dorado para texto sobre fondo claro, ~5.6:1 */
+  --color-gold-soft: #e6d3b3; /* dorado para texto sobre fondo oscuro */
+
+  --animate-fade-in: fade-in 0.25s ease-out;
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: none; }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* El navbar fijo mide 68px: las anclas no deben quedar debajo */
+section[id] {
+  scroll-margin-top: 68px;
+}
+
+:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 3px;
+}
